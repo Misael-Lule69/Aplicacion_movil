@@ -1,0 +1,32 @@
+# Análisis de código para proyectos Flutter
+# Documentación oficial: https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  # Configuración del analizador
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    sort_child_properties_last: ignore
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - ".dart_tool/**"
+    - "build/**"
+
+# Usa las reglas de lint recomendadas por Flutter
+include: package:flutter_lints/flutter.yaml
+
+
+linter:
+  # Personalización de reglas (sobrescribe las de flutter_lints)
+  rules:
+    # Habilitadas
+    always_use_package_imports: true
+    avoid_empty_else: true
+    prefer_const_constructors: true
+    prefer_final_fields: true
+    
+    # Deshabilitadas
+    avoid_print: false       # Permite usar print()
+    public_member_api_docs: false  # No requiere documentación pública
