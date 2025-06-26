@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practica_flutter/homepage.dart';
 import 'package:practica_flutter/login.dart';
 import 'package:practica_flutter/registrar.dart';
 import 'package:practica_flutter/salir.dart';
@@ -11,11 +12,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int valorIcono = 0; // Cambiado a lowerCamelCase
+
+  final List<Widget> paginas = const [Homepage(), login(), registrar()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Data"),
+        title: const Text("Mi codiguito"),
         backgroundColor: Colors.blue[800],
         centerTitle: true,
         elevation: 10,
@@ -122,68 +127,25 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return Column(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        color: Colors.grey[100],
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            _buildProductCard(),
-                            _buildProductCard(),
-                            _buildProductCard(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        color: Colors.blue[800],
-                        child: const Center(
-                          child: Text(
-                            "Sección Azul",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        color: Colors.green[800],
-                        child: const Center(
-                          child: Text(
-                            "Sección Verde",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          );
+      body: paginas[valorIcono],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: valorIcono,
+        onTap: (index) {
+          setState(() {
+            valorIcono = index;
+          });
         },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Inicio"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.login_outlined),
+            label: "Login",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.app_registration),
+            label: "Registro",
+          ),
+        ],
       ),
     );
   }

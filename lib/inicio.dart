@@ -12,7 +12,7 @@ class _iniciostate extends State<inicio> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 5),
+      const Duration(seconds: 5),
       () => Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => login()),

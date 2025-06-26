@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:practica_flutter/login.dart'; // Asegúrate de importar tu página de login
+import 'package:flutter/material.dart';
 
 class Salir extends StatelessWidget {
   const Salir({super.key});
