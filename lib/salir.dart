@@ -38,7 +38,7 @@ class Salir extends StatelessWidget {
                     // Navegar de vuelta al login
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => const login()),
+                      MaterialPageRoute(builder: (context) => const Login()),
                       (Route<dynamic> route) =>
                           false, // Elimina todas las rutas anteriores
                     );
